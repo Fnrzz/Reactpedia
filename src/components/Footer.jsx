@@ -47,7 +47,7 @@ const Footer = () => {
       <div className="bg-dark py-5">
         <div className="container d-flex justify-content-center">
           <small className="text-white m-0 ">
-            © 2023 Reactpedia. All rights reserved
+            © 2024 Reactpedia. All rights reserved
           </small>
         </div>
       </div>
