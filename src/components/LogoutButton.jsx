@@ -1,7 +1,7 @@
 const LogoutButton = () => {
   const handlerLogout = () => {
     localStorage.removeItem("access_token");
-    window.location.reload();
+    window.dispatchEvent(new Event("storage"));
   };
   return (
     <button onClick={handlerLogout} className="nav-link">

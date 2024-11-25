@@ -4,11 +4,20 @@ import { useState, useEffect } from "react";
 import LogoutButton from "./LogoutButton";
 
 const Navbar = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(
+    !!localStorage.getItem("access_token")
+  );
 
   useEffect(() => {
-    setIsLogin(localStorage.getItem("access_token") ? true : false);
+    const handleStorageChange = () => {
+      setIsLogin(!!localStorage.getItem("access_token"));
+    };
+    window.addEventListener("storage", handleStorageChange);
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
   }, []);
+
   return (
     <nav className="navbar navbar-expand-lg ">
       <div className="container">
