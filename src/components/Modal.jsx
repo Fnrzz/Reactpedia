@@ -7,6 +7,7 @@ const Modal = ({ teksButton, className }) => {
   const [password, setPassword] = useState("");
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -24,9 +25,11 @@ const Modal = ({ teksButton, className }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const isLogin = await login(username, password);
     if (isLogin) {
       window.dispatchEvent(new Event("storage"));
+      setIsLoading(false);
       handleModal();
       navigate("/");
     } else {
@@ -95,15 +98,27 @@ const Modal = ({ teksButton, className }) => {
                       {error}
                     </small>
                   )}
-                  <div className="d-grid">
-                    <button
-                      type="submit"
-                      className="btn btn-dark rounded-pill"
-                      onClick={handleSubmit}
-                    >
-                      Login
-                    </button>
-                  </div>
+                  {isLoading ? (
+                    <div className="d-grid">
+                      <button className="btn btn-dark rounded-pill disabled">
+                        <span
+                          className="spinner-border spinner-border-sm me-2"
+                          aria-hidden="true"
+                        ></span>
+                        <span role="status">Loading...</span>
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="d-grid">
+                      <button
+                        type="submit"
+                        className="btn btn-dark rounded-pill"
+                        onClick={handleSubmit}
+                      >
+                        Login
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
