@@ -37,6 +37,10 @@
   height: 150px;
 }
 
+.mb-10 {
+  margin-bottom: 100px;
+}
+
 @media (max-width: 768px) {
   .font-big {
     font-size: 40px;
