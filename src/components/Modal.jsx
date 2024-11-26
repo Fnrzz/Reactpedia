@@ -33,6 +33,7 @@ const Modal = ({ teksButton, className }) => {
       handleModal();
       navigate("/");
     } else {
+      setIsLoading(false);
       setError("Invalid email or password");
     }
     setUsername("");
