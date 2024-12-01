@@ -13,19 +13,19 @@ const CartCount = ({ setShowModal }) => {
   const handleCheckout = () => {
     setShowModal(true);
     setTimeout(() => {
+      if (cart.length > 0) {
+        cart.map((item) => {
+          const product = {
+            id: item.id,
+            quantity: item.quantity,
+          };
+          dispatch(updateStock(product));
+        });
+        dispatch(clearCart());
+      }
       setShowModal(false);
       navigate("/");
     }, 3000);
-    if (cart.length > 0) {
-      cart.map((item) => {
-        const product = {
-          id: item.id,
-          quantity: item.quantity,
-        };
-        dispatch(updateStock(product));
-      });
-      dispatch(clearCart());
-    }
   };
 
   return (

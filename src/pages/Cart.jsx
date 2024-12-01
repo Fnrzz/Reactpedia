@@ -38,7 +38,9 @@ const Cart = () => {
             <div className="modal-body py-5">
               <div className="text-center">
                 <i className="bi bi-check-circle text-success display-1" />
-                <h5 className="fw-bold mt-3">Thank You for your order</h5>
+                <h5 className="fw-bold mt-3">
+                  Thank You <br /> for your order
+                </h5>
               </div>
             </div>
           </div>
