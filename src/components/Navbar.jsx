@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Modal from "./Modal";
+import ModalLogin from "./ModalLogin";
 import { useState, useEffect } from "react";
 import LogoutButton from "./LogoutButton";
 
@@ -70,7 +70,7 @@ const Navbar = () => {
               {isLogin ? (
                 <LogoutButton />
               ) : (
-                <Modal teksButton={"Login"} className={"nav-link"} />
+                <ModalLogin teksButton={"Login"} className={"nav-link"} />
               )}
             </li>
           </ul>

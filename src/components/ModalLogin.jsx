@@ -2,7 +2,7 @@ import { useState } from "react";
 import login from "../features/authenticate";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
-const Modal = ({ teksButton, className }) => {
+const ModalLogin = ({ teksButton, className }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -130,9 +130,9 @@ const Modal = ({ teksButton, className }) => {
   );
 };
 
-Modal.propTypes = {
+ModalLogin.propTypes = {
   teksButton: PropTypes.string,
   className: PropTypes.string,
 };
 
-export default Modal;
+export default ModalLogin;

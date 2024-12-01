@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Modal from "../components/Modal";
+import ModalLogin from "../components/ModalLogin";
 import AddCartButton from "../components/AddCartButton";
 import { useSelector } from "react-redux";
 const DetailProduct = () => {
@@ -44,7 +44,7 @@ const DetailProduct = () => {
             {isLogin ? (
               <AddCartButton dataProduct={product} />
             ) : (
-              <Modal
+              <ModalLogin
                 teksButton="Add to Cart"
                 className="btn btn-outline-success mt-4 w-sm-100"
               />
