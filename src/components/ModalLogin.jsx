@@ -32,12 +32,12 @@ const ModalLogin = ({ teksButton, className }) => {
       setIsLoading(false);
       handleModal();
       navigate("/");
+      setUsername("");
+      setPassword("");
     } else {
       setIsLoading(false);
       setError("Invalid email or password");
     }
-    setUsername("");
-    setPassword("");
   };
 
   return (
