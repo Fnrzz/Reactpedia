@@ -3,10 +3,10 @@ import {
   addQuantityCart,
   removeItemCart,
   removeQuantityCart,
-} from "../store/actions";
+} from "../store/actions/cartActions";
 
 const CartItems = () => {
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state) => state.cartReducer.cart);
   const dispatch = useDispatch();
 
   const handleAddQuantity = (productId) => {

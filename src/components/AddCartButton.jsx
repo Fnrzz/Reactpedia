@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { addCart } from "../store/actions";
+import { addCart } from "../store/actions/cartActions";
 import { useState } from "react";
 
 const AddCartButton = ({ productId }) => {

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 const CartCount = () => {
-  const total = useSelector((state) => state.total);
+  const total = useSelector((state) => state.cartReducer.total);
   return (
     <>
       <div className="mb-10">

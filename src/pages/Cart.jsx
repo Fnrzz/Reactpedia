@@ -3,7 +3,7 @@ import CartItems from "../components/CartItems";
 import { useSelector } from "react-redux";
 
 const Cart = () => {
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state) => state.cartReducer.cart);
   return (
     <div className="container min-vh-100 py-3">
       {cart.length === 0 ? (
