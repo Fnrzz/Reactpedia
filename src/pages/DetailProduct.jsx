@@ -42,7 +42,11 @@ const DetailProduct = () => {
             <p className="text-muted ">Stock : {product.stock}</p>
             <h4 className="fw-bold">${product.price}</h4>
             {isLogin ? (
-              <AddCartButton dataProduct={product} />
+              product.stock > 0 ? (
+                <AddCartButton dataProduct={product} />
+              ) : (
+                <p className="fw-bold text-danger">Product is out of stock</p>
+              )
             ) : (
               <ModalLogin
                 teksButton="Add to Cart"
