@@ -6,16 +6,13 @@ import { useSelector } from "react-redux";
 const DetailProduct = () => {
   const [product, setProduct] = useState([]);
   const [isLogin, setIsLogin] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   let { id } = useParams();
   const products = useSelector((state) => state.productReducer.products);
 
   useEffect(() => {
     const fetchData = () => {
-      setIsLoading(true);
       const data = products.find((product) => product.id === parseInt(id));
       setProduct(data);
-      setIsLoading(false);
       setIsLogin(localStorage.getItem("access_token") ? true : false);
     };
     fetchData();
@@ -27,44 +24,34 @@ const DetailProduct = () => {
           <i className="bi bi-arrow-left-circle"></i> Back
         </Link>
       </div>
-      {isLoading ? (
-        <div className="d-flex justify-content-center mt-5 min-vh-100">
-          <div className="spinner-border" role="status">
-            <span className="visually-hidden">Loading...</span>
+      <div className="container mt-3 py-3">
+        <div className="row align-items-center">
+          <div className="col-12 col-lg-4 d-flex justify-content-center mb-5">
+            <img
+              src={product.image}
+              alt={product.title}
+              className="image-detail-product"
+            />
+          </div>
+          <div className="col-12 col-lg-8 px-4">
+            <h1 className="fw-bold fs-5 w-md-75 mb-4">{product.title}</h1>
+            <span className="border border-secondary rounded-pill px-3 py-1 fs-6">
+              {product.category}
+            </span>
+            <p className="text-muted mt-4">{product.description}</p>
+            <p className="text-muted ">Stock : {product.stock}</p>
+            <h4 className="fw-bold">${product.price}</h4>
+            {isLogin ? (
+              <AddCartButton dataProduct={product} />
+            ) : (
+              <Modal
+                teksButton="Add to Cart"
+                className="btn btn-outline-success mt-4 w-sm-100"
+              />
+            )}
           </div>
         </div>
-      ) : (
-        <>
-          <div className="container mt-3 py-3">
-            <div className="row align-items-center">
-              <div className="col-12 col-lg-4 d-flex justify-content-center mb-5">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="image-detail-product"
-                />
-              </div>
-              <div className="col-12 col-lg-8 px-4">
-                <h1 className="fw-bold fs-5 w-md-75 mb-4">{product.title}</h1>
-                <span className="border border-secondary rounded-pill px-3 py-1 fs-6">
-                  {product.category}
-                </span>
-                <p className="text-muted mt-4">{product.description}</p>
-                <p className="text-muted ">Stock : {product.stock}</p>
-                <h4 className="fw-bold">${product.price}</h4>
-                {isLogin ? (
-                  <AddCartButton dataProduct={product} />
-                ) : (
-                  <Modal
-                    teksButton="Add to Cart"
-                    className="btn btn-outline-success mt-4 w-sm-100"
-                  />
-                )}
-              </div>
-            </div>
-          </div>
-        </>
-      )}
+      </div>
     </>
   );
 };
