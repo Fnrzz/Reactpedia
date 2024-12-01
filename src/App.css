@@ -41,6 +41,12 @@
   margin-bottom: 100px;
 }
 
+.w-quantity {
+  display: flex;
+  justify-content: center;
+  width: 20px;
+}
+
 @media (max-width: 768px) {
   .font-big {
     font-size: 40px;

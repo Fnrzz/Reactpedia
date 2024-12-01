@@ -70,7 +70,9 @@ const CartItems = () => {
                         <i className="bi bi-dash fs-5"></i>
                       </button>
                     )}
-                    <span className="mx-3 my-0">{cartProduct.quantity}</span>
+                    <span className="mx-3 my-0 w-quantity">
+                      {cartProduct.quantity}
+                    </span>
                     {product.stock === cartProduct.quantity ? (
                       <button
                         className="btn btn-sm btn-outline-secondary rounded-circle"
