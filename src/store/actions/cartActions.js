@@ -22,4 +22,16 @@ const removeQuantityCart = (productId) => {
   };
 };
 
-export { addCart, removeItemCart, removeQuantityCart, addQuantityCart };
+const clearCart = () => {
+  return async (dispatch) => {
+    dispatch({ type: "CLEAR_CART" });
+  };
+};
+
+export {
+  addCart,
+  removeItemCart,
+  removeQuantityCart,
+  addQuantityCart,
+  clearCart,
+};

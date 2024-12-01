@@ -12,4 +12,10 @@ const getProducts = () => {
   };
 };
 
+export const updateStock = (item) => {
+  return async (dispatch) => {
+    dispatch({ type: "UPDATE_STOCK", payload: item });
+  };
+};
+
 export default getProducts;
