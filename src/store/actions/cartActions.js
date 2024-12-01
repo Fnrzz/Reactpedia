@@ -1,10 +1,6 @@
-import axios from "axios";
-const addCart = (productId) => {
+const addCart = (product) => {
   return async (dispatch) => {
-    const res = await axios.get(
-      `https://fakestoreapi.com/products/${productId}`
-    );
-    dispatch({ type: "ADD_TO_CART", payload: res.data });
+    dispatch({ type: "ADD_TO_CART", payload: product });
   };
 };
 

@@ -4,7 +4,9 @@ const initialState = {
 };
 
 const calculateTotal = (cart) => {
-  return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  return cart
+    .reduce((sum, item) => sum + item.price * item.quantity, 0)
+    .toFixed(2);
 };
 
 const cartReducer = (state = initialState, action) => {

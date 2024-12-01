@@ -3,11 +3,11 @@ import { useDispatch } from "react-redux";
 import { addCart } from "../store/actions/cartActions";
 import { useState } from "react";
 
-const AddCartButton = ({ productId }) => {
+const AddCartButton = ({ dataProduct }) => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const handlerAddCart = () => {
-    dispatch(addCart(productId));
+    dispatch(addCart(dataProduct));
     setShowModal(true);
     setTimeout(() => {
       setShowModal(false);
@@ -47,7 +47,7 @@ const AddCartButton = ({ productId }) => {
 };
 
 AddCartButton.propTypes = {
-  productId: PropTypes.number,
+  dataProduct: PropTypes.object,
 };
 
 export default AddCartButton;

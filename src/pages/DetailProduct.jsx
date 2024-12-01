@@ -1,24 +1,25 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import fetchProductById from "../features/getProdcutById";
 import Modal from "../components/Modal";
 import AddCartButton from "../components/AddCartButton";
+import { useSelector } from "react-redux";
 const DetailProduct = () => {
   const [product, setProduct] = useState([]);
   const [isLogin, setIsLogin] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   let { id } = useParams();
+  const products = useSelector((state) => state.productReducer.products);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = () => {
       setIsLoading(true);
-      const data = await fetchProductById(id);
+      const data = products.find((product) => product.id === parseInt(id));
       setProduct(data);
       setIsLoading(false);
       setIsLogin(localStorage.getItem("access_token") ? true : false);
     };
     fetchData();
-  }, [id]);
+  }, [id, products]);
   return (
     <>
       <div className="container mb-5">
@@ -49,9 +50,10 @@ const DetailProduct = () => {
                   {product.category}
                 </span>
                 <p className="text-muted mt-4">{product.description}</p>
+                <p className="text-muted ">Stock : {product.stock}</p>
                 <h4 className="fw-bold">${product.price}</h4>
                 {isLogin ? (
-                  <AddCartButton productId={product.id} />
+                  <AddCartButton dataProduct={product} />
                 ) : (
                   <Modal
                     teksButton="Add to Cart"
