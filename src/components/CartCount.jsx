@@ -1,13 +1,21 @@
 import { useSelector, useDispatch } from "react-redux";
 import { updateStock } from "../store/actions/productActions";
 import { clearCart } from "../store/actions/cartActions";
+import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
-const CartCount = () => {
+
+const CartCount = ({ setShowModal }) => {
   const total = useSelector((state) => state.cartReducer.total);
   const cart = useSelector((state) => state.cartReducer.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handleCheckout = () => {
+    setShowModal(true);
+    setTimeout(() => {
+      setShowModal(false);
+      navigate("/");
+    }, 3000);
     if (cart.length > 0) {
       cart.map((item) => {
         const product = {
@@ -17,7 +25,6 @@ const CartCount = () => {
         dispatch(updateStock(product));
       });
       dispatch(clearCart());
-      navigate("/");
     }
   };
 
@@ -53,6 +60,10 @@ const CartCount = () => {
       </div>
     </>
   );
+};
+
+CartCount.propTypes = {
+  setShowModal: PropTypes.func,
 };
 
 export default CartCount;
