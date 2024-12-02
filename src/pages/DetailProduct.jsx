@@ -41,17 +41,16 @@ const DetailProduct = () => {
             <p className="text-muted mt-4">{product.description}</p>
             <p className="text-muted ">Stock : {product.stock}</p>
             <h4 className="fw-bold">${product.price}</h4>
-            {isLogin ? (
-              product.stock > 0 ? (
-                <AddCartButton dataProduct={product} />
-              ) : (
-                <p className="fw-bold text-danger">Product is out of stock</p>
-              )
-            ) : (
+            {product.stock == 0 && (
+              <p className="fw-bold text-danger">Product is out of stock</p>
+            )}
+            {!isLogin && product.stock > 0 ? (
               <ModalLogin
                 teksButton="Add to Cart"
                 className="btn btn-outline-success mt-4 w-sm-100"
               />
+            ) : (
+              product.stock > 0 && <AddCartButton dataProduct={product} />
             )}
           </div>
         </div>
