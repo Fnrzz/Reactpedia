@@ -2,11 +2,14 @@ import { Link } from "react-router-dom";
 import ModalLogin from "./ModalLogin";
 import { useState, useEffect } from "react";
 import LogoutButton from "./LogoutButton";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [isLogin, setIsLogin] = useState(
     !!localStorage.getItem("access_token")
   );
+
+  const cart = useSelector((state) => state.cartReducer.cart);
 
   useEffect(() => {
     const handleStorageChange = () => {
@@ -60,9 +63,14 @@ const Navbar = () => {
             <div className="d-none d-lg-block vr mx-3"></div>
             <hr className="d-lgnone d-sm-block my-3" />
             {isLogin && (
-              <li className="nav-item">
-                <Link className="nav-link" to="/cart">
-                  <i className="bi bi-bag"></i>
+              <li className="nav-item me-3 ">
+                <Link className="nav-link position-relative cart" to="/cart">
+                  <i className="bi bi-bag fs-5"></i>
+                  {cart.length > 0 && (
+                    <div className="total-pill">
+                      {cart.reduce((total, item) => total + item.quantity, 0)}
+                    </div>
+                  )}
                 </Link>
               </li>
             )}
