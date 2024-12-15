@@ -16,9 +16,9 @@ const addQuantityCart = (productId) => {
   };
 };
 
-const removeQuantityCart = (productId) => {
+const decreaseQuantityCart = (productId) => {
   return async (dispatch) => {
-    dispatch({ type: "REMOVE_QUANTITY", payload: productId });
+    dispatch({ type: "DECREASE_QUANTITY", payload: productId });
   };
 };
 
@@ -31,7 +31,7 @@ const clearCart = () => {
 export {
   addCart,
   removeItemCart,
-  removeQuantityCart,
+  decreaseQuantityCart,
   addQuantityCart,
   clearCart,
 };

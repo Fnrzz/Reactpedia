@@ -12,9 +12,9 @@ const getProducts = () => {
   };
 };
 
-export const updateStock = (item) => {
+export const decreaseStock = (item) => {
   return async (dispatch) => {
-    dispatch({ type: "UPDATE_STOCK", payload: item });
+    dispatch({ type: "DECREASE_STOCK", payload: item });
   };
 };
 

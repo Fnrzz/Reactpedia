@@ -9,7 +9,7 @@ const productsReducer = (state = initialState, action) => {
         ...state,
         products: action.payload,
       };
-    case "UPDATE_STOCK":
+    case "DECREASE_STOCK":
       return {
         ...state,
         products: state.products.map((product) =>

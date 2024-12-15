@@ -45,7 +45,7 @@ const cartReducer = (state = initialState, action) => {
       };
     }
 
-    case "REMOVE_QUANTITY": {
+    case "DECREASE_QUANTITY": {
       const updatedCart = state.cart.map((item) =>
         item.id === action.payload
           ? { ...item, quantity: item.quantity - 1 }

@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   addQuantityCart,
   removeItemCart,
-  removeQuantityCart,
+  decreaseQuantityCart,
 } from "../store/actions/cartActions";
 
 const CartItems = () => {
@@ -15,7 +15,7 @@ const CartItems = () => {
   };
 
   const handleRemoveQuantity = (productId) => {
-    dispatch(removeQuantityCart(productId));
+    dispatch(decreaseQuantityCart(productId));
   };
 
   const handleRemoveItem = (productId) => {

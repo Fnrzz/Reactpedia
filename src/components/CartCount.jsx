@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { updateStock } from "../store/actions/productActions";
+import { decreaseStock } from "../store/actions/productActions";
 import { clearCart } from "../store/actions/cartActions";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +19,7 @@ const CartCount = ({ setShowModal }) => {
             id: item.id,
             quantity: item.quantity,
           };
-          dispatch(updateStock(product));
+          dispatch(decreaseStock(product));
         });
         dispatch(clearCart());
       }
